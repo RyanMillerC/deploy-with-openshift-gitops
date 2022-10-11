@@ -1,0 +1,9 @@
+# Replicas of each application
+replicaCount: 1
+
+# Domain the application will be served from
+dnsName: hershey-park-dev.apps.dev.taco.moe
+
+applications:
+  - name: hershey-park-dev
+    image: quay.io/rymiller/theme-park-api:hershey-park

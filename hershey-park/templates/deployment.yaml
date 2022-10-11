@@ -1,0 +1,24 @@
+{{ range .Values.applications }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ $.Release.Name }}-{{ .name }}"
+spec:
+  selector:
+    matchLabels:
+      app: "{{ $.Release.Name }}-{{ .name }}"
+  replicas: {{ $.Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: "{{ $.Release.Name }}-{{ .name }}"
+    spec:
+      containers:
+      - name: "{{ $.Release.Name }}-{{ .name }}"
+        image: "{{ .image }}"
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          protocol: "TCP"
+{{ end }}

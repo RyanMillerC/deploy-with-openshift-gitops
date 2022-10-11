@@ -1,0 +1,5 @@
+apiVersion: v2
+name: theme-park-api
+description: Example Spring REST API deployed through a Helm Chart
+type: application
+version: 0.1.0
