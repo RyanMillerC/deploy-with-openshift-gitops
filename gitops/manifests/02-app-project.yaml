@@ -1,0 +1,11 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: theme-park-api
+  namespace: openshift-gitops
+spec:
+  destinations:
+    - name: in-cluster
+      namespace: theme-park-api
+  sourceRepos:
+    - https://github.com/RyanMillerC/deploy-with-openshift-gitops.git
