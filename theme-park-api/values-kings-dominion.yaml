@@ -1,0 +1,9 @@
+# Replicas of each application
+replicaCount: 1
+
+# Domain the application will be served from
+dnsName: kings-dominion-dev.apps.dev.taco.moe
+
+applications:
+  - name: kings-dominion-dev
+    image: quay.io/rymiller/theme-park-api:kings-dominion

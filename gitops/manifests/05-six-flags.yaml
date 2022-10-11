@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: six-flags
+  namespace: openshift-gitops
+spec:
+  destination:
+    name: in-cluster
+    namespace: theme-park-api
+  project: theme-park-api # Argo CD AppProject
+  source:
+    directory:
+      # This is necessary if you have multiple directories in a repo and only
+      # want to deploy a single directory
+      recurse: false
+    helm:
+      valueFiles:
+        - values-six-flags.yaml
+    path: ./theme-park-api
+    repoURL: https://github.com/RyanMillerC/deploy-with-openshift-gitops.git
+    targetRevision: main # Argo will default to `master`
+  # These sync policy settings allow Argo to prune outdated resoruces and fix
+  # resources that might be missing.
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - PruneLast=true

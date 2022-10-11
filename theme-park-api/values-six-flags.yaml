@@ -1,0 +1,9 @@
+# Replicas of each application
+replicaCount: 1
+
+# Domain the application will be served from
+dnsName: six-flags-dev.apps.dev.taco.moe
+
+applications:
+  - name: six-flags-dev
+    image: quay.io/rymiller/theme-park-api:six-flags
